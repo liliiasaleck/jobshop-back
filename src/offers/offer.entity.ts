@@ -1,8 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Exclude } from 'class-transformer';
+import User from 'src/auth/user.entity';
+import { Column, Entity, ManyToOne, ObjectIdColumn, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Offer {
-  @PrimaryGeneratedColumn('uuid')
+  @ObjectIdColumn()
   id: string;
   @Column()
   title: string;
@@ -28,4 +30,6 @@ export class Offer {
   jobDescription: string;
   @Column()
   aboutCompany: string;
+
+  
 }

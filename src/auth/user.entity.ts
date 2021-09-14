@@ -1,15 +1,18 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Offer } from 'src/offers/offer.entity';
+import { Column, Entity, ObjectIdColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('user')
+@Entity()
 class User {
-  @PrimaryGeneratedColumn('uuid')
-  public id: number;
+  @ObjectIdColumn()
+    public id: number;
 
   @Column({ unique: true })
   public email: string;
 
   @Column()
   public password: string;
+
+  
 }
 
 export default User;

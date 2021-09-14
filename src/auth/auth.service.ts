@@ -22,16 +22,13 @@ export class AuthService {
     authCredentialsDto: AuthCredentialsDto,
   ): Promise<any> {
     const { email, password } = authCredentialsDto;
-    console.log(email, password)
-    console.log(this.usersRepository)
-
-    const user = await this.usersRepository.findAll();
-    // if (user && (await bcrypt.compare(password, user.password))) {
-    //   const payload: JwtPayload = { email };
-    //   const accessToken: string = await this.jwtService.sign(payload);
-    //   return { accessToken };
-    // // } else {
-    //   throw new UnauthorizedException('Please check your login credentials');
-    // }
+    const user = await this.usersRepository.findOne({email});
+    if (user && (await bcrypt.compare(password, user.password))) {
+      const payload: JwtPayload = { email };
+      const accessToken: string = await this.jwtService.sign(payload);
+      return { accessToken };
+    } else {
+      throw new UnauthorizedException('Please check your login credentials');
+    }
   }
 }

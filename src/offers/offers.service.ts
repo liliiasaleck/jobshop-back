@@ -4,6 +4,7 @@ import { OffersRepository } from './offers.reporitory';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Offer } from './offer.entity';
 import { GetOfferDto } from './dto/get-offer-dto';
+import User from 'src/auth/user.entity';
 
 @Injectable()
 export class OffersService {
@@ -13,10 +14,10 @@ export class OffersService {
   ) {}
 
   getAllOffers(getOfferDto: GetOfferDto): Promise<Offer[]> {
-    return this.offersRepository.getAllOffers(getOfferDto)
+    return this.offersRepository.getAllOffers(getOfferDto);
   }
 
-  async getOfferById(id: string): Promise<Offer> {
+  async getOfferById(id): Promise<Offer> {
     const found = await this.offersRepository.findOne(id);
     if (!found) {
       throw new NotFoundException(`Offer with ID "${id}" not found`);
@@ -28,6 +29,4 @@ export class OffersService {
     return this.offersRepository.createOffer(createOfferDto)
   }
 
-
-  
 }

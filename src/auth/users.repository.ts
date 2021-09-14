@@ -27,7 +27,8 @@ export class UserRepository extends Repository<User> {
       }
     }
   }
-  async findAll(): Promise<any>{
-    return this.find();
-  }
+  // async findAll(): Promise<any>{
+  //   return this.findOne();
+  // }
+  
 }
