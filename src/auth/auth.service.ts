@@ -10,19 +10,19 @@ import { JwtPayload } from './jwt-payload.interface';
 export class AuthService {
   constructor(
     @InjectRepository(UserRepository)
-    private usersRepository: UserRepository,
+    private userRepository: UserRepository,
     private jwtService: JwtService,
   ) {}
 
   async signUp(authCredentialsDto: AuthCredentialsDto): Promise<any> {
-    return this.usersRepository.createUser(authCredentialsDto);
+    return this.userRepository.createUser(authCredentialsDto);
   }
 
   async signIn(
     authCredentialsDto: AuthCredentialsDto,
   ): Promise<any> {
     const { email, password } = authCredentialsDto;
-    const user = await this.usersRepository.findOne({email});
+    const user = await this.userRepository.findOne({email});
     if (user && (await bcrypt.compare(password, user.password))) {
       const payload: JwtPayload = { email };
       const accessToken: string = await this.jwtService.sign(payload);

@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { OffersModule } from './offers/offers.module';
 import { AuthModule } from './auth/auth.module';
-import User from './auth/user.entity';
-import { Offer } from './offers/offer.entity';
+import { FormController } from './form/form.controller';
+import { FormModule } from './form/form.module';
 
 @Module({
   imports: [
@@ -16,14 +16,10 @@ import { Offer } from './offers/offer.entity';
       username:'postgres',
       password: 'postgres',
       synchronize: true,
-      autoLoadEntities: true,
-      // url: process.env.TYPEORM_CONNECTION_STRING,
-      // database: process.env.TYPEORM_DATABASE,
-      // password: process.env.TYPEORM_PASSWORD,
-      // username: process.env.TYPEORM_USERNAME,
-      
+      autoLoadEntities: true,     
     }),
     AuthModule,
+    FormModule,
   ],
 })
 export class AppModule {}

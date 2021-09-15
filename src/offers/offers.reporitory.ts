@@ -1,4 +1,3 @@
-import User from 'src/auth/user.entity';
 import { EntityRepository, Repository } from 'typeorm';
 import { CreateOfferDto } from './dto/create-offer.dto';
 import { GetOfferDto } from './dto/get-offer-dto';

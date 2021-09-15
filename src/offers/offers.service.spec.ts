@@ -1,6 +1,6 @@
 import { Test } from '@nestjs/testing';
-import { OffersService } from './offers/offers.service';
-import { OffersRepository } from './offers/offers.reporitory';
+import { OffersService } from './offers.service';
+import { OffersRepository } from './offers.reporitory';
 import { NotFoundException } from '@nestjs/common';
 
 const mockOffersRepository = () => ({
@@ -43,7 +43,7 @@ describe('OffersService', () => {
   });
 
   describe('getAllOffers', () => {
-    it('calls OffersRrepository.getAllOffers and returns the result', async () => {
+    it('calls OffersRepository.getAllOffers and returns the result', async () => {
       offersRepository.getAllOffers.mockResolvedValue('someValue');
       const result = await offersService.getAllOffers(null);
       expect(result).toEqual('someValue');
@@ -52,14 +52,14 @@ describe('OffersService', () => {
 
 
   describe('getOfferById', () => {
-    it('calls TasksRepository.findOne and returns the result', async () => {
+    it('calls OffersRepository.findOne and returns the result', async () => {
 
       offersRepository.findOne.mockResolvedValue(mockOffer);
       const result = await offersService.getOfferById('someId');
       expect(result).toEqual(mockOffer);
     });
 
-    it('calls TasksRepository.findOne and handles an error', async () => {
+    it('calls OffersRepository.findOne and handles an error', async () => {
       offersRepository.findOne.mockResolvedValue(null);
       expect(offersService.getOfferById('someId')).rejects.toThrow(
         NotFoundException,
@@ -68,7 +68,7 @@ describe('OffersService', () => {
   });
 
   describe('createOffer', () => {
-    it('calls OffersRrepository.createOffer and returns the result', async () => {
+    it('calls OffersRepository.createOffer and returns the result', async () => {
       
       offersRepository.createOffer.mockResolvedValue('createdOffer');
       const result = await offersService.createOffer(mockOffer);
