@@ -4,7 +4,6 @@ import { OffersRepository } from './offers.reporitory';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Offer } from './offer.entity';
 import { GetOfferDto } from './dto/get-offer-dto';
-import User from 'src/auth/user.entity';
 
 @Injectable()
 export class OffersService {

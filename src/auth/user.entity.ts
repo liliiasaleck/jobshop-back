@@ -3,7 +3,7 @@ import { Column, Entity, ObjectIdColumn, OneToMany, PrimaryGeneratedColumn } fro
 
 @Entity()
 class User {
-  @ObjectIdColumn()
+  @PrimaryGeneratedColumn('uuid')
     public id: number;
 
   @Column({ unique: true })

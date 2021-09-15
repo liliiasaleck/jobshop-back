@@ -4,7 +4,7 @@ import { Column, Entity, ManyToOne, ObjectIdColumn, PrimaryGeneratedColumn } fro
 
 @Entity()
 export class Offer {
-  @ObjectIdColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
   @Column()
   title: string;
