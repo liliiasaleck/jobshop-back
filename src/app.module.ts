@@ -5,6 +5,7 @@ import { AuthModule } from './auth/auth.module';
 import { FormModule } from './form/form.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { configValidationSchema } from './config.schema';
+import { off } from 'process';
 
 @Module({
   imports: [
@@ -17,7 +18,6 @@ import { configValidationSchema } from './config.schema';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
-        
           type: 'postgres',
           synchronize: true,
           autoLoadEntities: true,
@@ -26,7 +26,10 @@ import { configValidationSchema } from './config.schema';
           database:configService.get('DB_DATABASE'),
           username:configService.get('DB_USERNAME'),
           password:configService.get('DB_PASSWORD'),
-        
+          ssl: {     
+            require: true,
+            rejectUnauthorized: false 
+          }        
       }),
     }),
     OffersModule,
