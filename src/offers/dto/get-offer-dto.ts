@@ -1,16 +1,16 @@
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class GetOfferDto {
-  title: string;
+  @IsOptional()
+  @IsString()
+  search?: string;
+}
+
+export class Filter{
   salaryFrom: number;
   salaryTo: number;
   location: string;
   tech: string;
-  logo: string;
   experience: string;
-  companySize: number;
-  companyName: string;
   employmentType: string;
-  jobDescription: string;
-  aboutCompany: string;
 }
