@@ -1,4 +1,4 @@
-import { Offer } from 'src/offers/offer.entity';
+import { Offer } from 'src/app/offers/offer.entity';
 import { Column, Entity, ObjectIdColumn, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

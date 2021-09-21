@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Post, Query, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { GetUser } from 'src/auth/get-user.decorator';
-import User from 'src/auth/user.entity';
+import { GetUser } from 'src/app/auth/get-user.decorator';
+import User from 'src/app/auth/user.entity';
 import { CreateOfferDto } from './dto/create-offer.dto';
 import { GetOfferDto } from './dto/get-offer-dto';
 import { Offer } from './offer.entity';

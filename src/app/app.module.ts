@@ -4,16 +4,14 @@ import { OffersModule } from './offers/offers.module';
 import { AuthModule } from './auth/auth.module';
 import { FormModule } from './form/form.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { configValidationSchema } from './config.schema';
-import { off } from 'process';
+import { configValidationSchema } from '../config.schema';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: [`.env.stage.${process.env.STAGE}`],
-      validationSchema: configValidationSchema,
+      validationSchema: configValidationSchema,      
     }),
-    
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -29,7 +27,7 @@ import { off } from 'process';
           ssl: {     
             require: true,
             rejectUnauthorized: false 
-          }        
+          },           
       }),
     }),
     OffersModule,
