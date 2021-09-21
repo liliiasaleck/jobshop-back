@@ -15,7 +15,9 @@ import { configValidationSchema } from '../config.schema';
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: async (configService: ConfigService) => ({
+      useFactory: async (configService: ConfigService) => {
+        const isProduction = configService.get('STAGE') === 'prod';
+        return{
           type: 'postgres',
           synchronize: true,
           autoLoadEntities: true,
@@ -27,8 +29,9 @@ import { configValidationSchema } from '../config.schema';
           ssl: {     
             require: true,
             rejectUnauthorized: false 
-          },           
-      }),
+          },       
+        }
+      },
     }),
     OffersModule,
     AuthModule,
