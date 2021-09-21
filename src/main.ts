@@ -5,8 +5,7 @@ import { AppModule } from './app/app.module';
 
 async function bootstrap() {
   const logger = new Logger();
-  const app = await NestFactory.create(AppModule);
-  app.enableCors();
+  const app = await NestFactory.create(AppModule, { cors: true });
   app.useGlobalPipes(new ValidationPipe());
   const port = process.env.PORT;
   await app.listen(port || 3000);
