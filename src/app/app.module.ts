@@ -16,7 +16,7 @@ import { configValidationSchema } from '../config.schema';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
-        const isProduction = configService.get('STAGE') === 'prod';
+        // const isProduction = configService.get('STAGE') === 'prod';
         return{
           type: 'postgres',
           synchronize: true,
