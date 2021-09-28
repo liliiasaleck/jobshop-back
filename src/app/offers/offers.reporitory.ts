@@ -6,8 +6,21 @@ import { Offer } from './offer.entity';
 @EntityRepository(Offer)
 export class OffersRepository extends Repository<Offer> {
   async getAllOffers(getOfferDto: GetOfferDto): Promise<Offer[]> {
-    const {search} = getOfferDto;
+    const {search, location, tech,experience,employmentType} = getOfferDto;
     const query = this.createQueryBuilder('offer');
+
+    if (location) {
+      query.andWhere('offer.location = :location', { location });
+    }
+    if (tech) {
+      query.andWhere('offer.tech = :tech', { tech});
+    }
+    if (experience) {
+      query.andWhere('offer.experience = :experience', { experience});
+    }
+    if (employmentType) {
+      query.andWhere('offer.employmentType = :employmentType', { employmentType});
+    }
 
     if (search) {
       query.andWhere(

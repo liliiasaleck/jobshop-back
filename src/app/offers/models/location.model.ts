@@ -1,0 +1,18 @@
+export enum LocationType {
+    WARSAW = 'WARSAW',
+    KRAKOW = 'KRAKOW',
+    LODZ = 'LODZ',
+    GDANSK = 'GDANSK',
+    POZNAN = 'POZNAN',
+    WROCLAW = 'WROCLAW',
+    SZCZECIN = 'SZCZECIN',
+    BYDGOSZCZ = 'BYDGOSZCZ',
+    LUBLIN = 'LUBLIN',
+    BYALYSTOK = 'BYALYSTOK',
+    KATOWICE = 'KATOWICE',
+    GDYNIA = 'GDYNIA',
+    RADOM = 'RADOM',
+    KIELCE = 'KIELCE',
+    OLSZTYN = 'OLSZTYN',
+    GLIWICE ='GLIWICE',
+  }
