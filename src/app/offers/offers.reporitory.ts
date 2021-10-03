@@ -21,7 +21,6 @@ export class OffersRepository extends Repository<Offer> {
     if (employmentType) {
       query.andWhere('offer.employmentType = :employmentType', { employmentType});
     }
-
     if (search) {
       query.andWhere(
         'LOWER(offer.title) LIKE LOWER(:search) OR LOWER(offer.jobDescription) LIKE LOWER(:search)',

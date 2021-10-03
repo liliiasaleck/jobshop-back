@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import {  IsOptional, IsString } from 'class-validator';
 import { TechType } from '../models/tech.model';
 import { ExperienceType } from '../models/experience.model';
 import { EmploymentType } from '../models/employmentType.model';
