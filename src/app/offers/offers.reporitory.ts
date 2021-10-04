@@ -10,16 +10,16 @@ export class OffersRepository extends Repository<Offer> {
     const query = this.createQueryBuilder('offer');
 
     if (location) {
-      query.andWhere('offer.location = :location', { location });
+      query.andWhere('LOWER(offer.location) LIKE LOWER(:location)', { location });
     }
     if (tech) {
-      query.andWhere('offer.tech = :tech', { tech});
+      query.andWhere('LOWER(offer.tech) LIKE LOWER(:tech)', { tech});
     }
     if (experience) {
-      query.andWhere('offer.experience = :experience', { experience});
+      query.andWhere('LOWER(offer.experience) LIKE LOWER(:experience)', { experience});
     }
     if (employmentType) {
-      query.andWhere('offer.employmentType = :employmentType', { employmentType});
+      query.andWhere('LOWER(offer.employmentType) LIKE LOWER(:employmentType)', { employmentType});
     }
     if (search) {
       query.andWhere(
