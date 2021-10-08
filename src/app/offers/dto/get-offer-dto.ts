@@ -9,15 +9,19 @@ export class GetOfferDto {
   @IsString()
   search?: string;
   @IsOptional()
-
   location?: LocationType;
   @IsOptional()
-
   tech?: TechType;
   @IsOptional()
-
   experience?: ExperienceType;
   @IsOptional()
-
   employmentType?: EmploymentType;
-}
+  @IsOptional()
+  salaryFrom?: number;
+  @IsOptional()
+  salaryTo?: number;
+  @IsOptional()
+  map?: {
+    lat: number,
+    lng: number,
+}}
