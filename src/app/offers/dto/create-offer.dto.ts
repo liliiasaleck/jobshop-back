@@ -12,7 +12,5 @@ export class CreateOfferDto {
   employmentType: string;
   jobDescription: string;
   aboutCompany: string;
-  map: {
-    lat: number,
-    lng: number,
-}}
+  
+}

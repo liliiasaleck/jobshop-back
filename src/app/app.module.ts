@@ -1,10 +1,11 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { OffersModule } from './offers/offers.module';
 import { AuthModule } from './auth/auth.module';
 import { FormModule } from './form/form.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { configValidationSchema } from '../config.schema';
+import { GeoLocationMiddleware } from './middleware/geoLocation.middleware';
 
 @Module({
   imports: [
@@ -38,4 +39,10 @@ import { configValidationSchema } from '../config.schema';
     FormModule,
   ],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(GeoLocationMiddleware)
+      .forRoutes({ path: 'offers', method: RequestMethod.POST });
+  }
+}
