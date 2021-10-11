@@ -15,6 +15,8 @@ export class Offer {
   @Column()
   location: string;
   @Column()
+  webSite: string;
+  @Column()
   tech: string;
   @Column()
   logo: string;

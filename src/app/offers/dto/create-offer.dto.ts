@@ -12,5 +12,5 @@ export class CreateOfferDto {
   employmentType: string;
   jobDescription: string;
   aboutCompany: string;
-  
+  webSite: string;
 }

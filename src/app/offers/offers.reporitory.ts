@@ -68,6 +68,7 @@ export class OffersRepository extends Repository<Offer> {
       employmentType,
       jobDescription,
       aboutCompany,
+      webSite,
     } = createOfferDto;
 
     const offer = this.create({
@@ -83,6 +84,7 @@ export class OffersRepository extends Repository<Offer> {
       employmentType,
       jobDescription,
       aboutCompany,
+      webSite
     });
     await this.save(offer);
     return offer;

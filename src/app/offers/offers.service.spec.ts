@@ -24,6 +24,8 @@ const mockOffer = {
   employmentType: 'Test',
   jobDescription: 'Test',
   aboutCompany: 'Test',
+  webSite: 'test.com'
+
 };
 
 describe('OffersService', () => {
