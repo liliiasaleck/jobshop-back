@@ -14,7 +14,6 @@ export class OffersRepository extends Repository<Offer> {
       employmentType,
       salaryFrom,
       salaryTo,
-      map,
     } = getOfferDto;
     const query = this.createQueryBuilder('offer');
 
@@ -49,9 +48,7 @@ export class OffersRepository extends Repository<Offer> {
     if (salaryTo) {
       query.andWhere('offer.salaryTo <= :salaryTo', { salaryTo});
     }
-    // if (map) {
-      // query.andWhere('LOWER(offer.map) LIKE LOWER(:map)', { map});
-    // }
+   
 
     const offer = await query.getMany();
     return offer;

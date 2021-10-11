@@ -8,13 +8,19 @@ export class GeoLocationMiddleware implements NestMiddleware {
     console.log('Request...');
     const { address } = req.body;
     const options: NodeGeocoder.Options = {
-      provider: 'google',
+      provider: 'mapquest',
+      httpAdapter: 'https',
+      apiKey: 'nHJdAIBs75lbomj23RHp9wE3HvnF1Nbp'
     };
 
-    const geoCoder = NodeGeocoder(options);
-    const result = await geoCoder.geocode(address);
 
-    req.body = {...req.body, lat: result.lat, long: result.long}
+    const geoCoder = NodeGeocoder(options);
+    try {
+      const result = await geoCoder.geocode(address);
+      req.body = { ...req.body, lat: result.lat, long: result.long};
+    } catch (error) {
+      console.log(error);
+    }
     next();
   }
 }

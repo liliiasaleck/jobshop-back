@@ -17,7 +17,6 @@ import { GeoLocationMiddleware } from './middleware/geoLocation.middleware';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
-        // const isProduction = configService.get('STAGE') === 'prod';
         return{
           type: 'postgres',
           synchronize: true,
