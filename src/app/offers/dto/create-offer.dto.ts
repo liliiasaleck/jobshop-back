@@ -13,4 +13,6 @@ export class CreateOfferDto {
   jobDescription: string;
   aboutCompany: string;
   webSite: string;
+  longitude: number;
+  latitude: number;
 }

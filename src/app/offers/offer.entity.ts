@@ -1,6 +1,12 @@
 import { Exclude } from 'class-transformer';
 import User from 'src/app/auth/user.entity';
-import { Column, Entity, ManyToOne, ObjectIdColumn, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  ObjectIdColumn,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class Offer {
@@ -32,6 +38,8 @@ export class Offer {
   jobDescription: string;
   @Column()
   aboutCompany: string;
-
-  
+  @Column({ default: 0, type: 'decimal' })
+  longitude: number;
+  @Column({ default: 0 , type: 'decimal'})
+  latitude: number;
 }

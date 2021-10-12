@@ -43,12 +43,11 @@ export class OffersRepository extends Repository<Offer> {
       );
     }
     if (salaryFrom) {
-      query.andWhere('offer.salaryFrom >= :salaryFrom', { salaryFrom});
+      query.andWhere('offer.salaryFrom >= :salaryFrom', { salaryFrom });
     }
     if (salaryTo) {
-      query.andWhere('offer.salaryTo <= :salaryTo', { salaryTo});
+      query.andWhere('offer.salaryTo <= :salaryTo', { salaryTo });
     }
-   
 
     const offer = await query.getMany();
     return offer;
@@ -69,6 +68,8 @@ export class OffersRepository extends Repository<Offer> {
       jobDescription,
       aboutCompany,
       webSite,
+      longitude,
+      latitude,
     } = createOfferDto;
 
     const offer = this.create({
@@ -84,7 +85,9 @@ export class OffersRepository extends Repository<Offer> {
       employmentType,
       jobDescription,
       aboutCompany,
-      webSite
+      webSite,
+      longitude,
+      latitude,
     });
     await this.save(offer);
     return offer;
