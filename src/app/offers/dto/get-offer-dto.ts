@@ -20,8 +20,5 @@ export class GetOfferDto {
   salaryFrom?: number;
   @IsOptional()
   salaryTo?: number;
-  @IsOptional()
-  map?: {
-    lat: number,
-    lng: number,
-}}
+  
+}

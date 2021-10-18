@@ -1,4 +1,9 @@
-import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
+import {
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+  RequestMethod,
+} from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { OffersModule } from './offers/offers.module';
 import { AuthModule } from './auth/auth.module';
@@ -11,26 +16,30 @@ import { GeoLocationMiddleware } from './middleware/geoLocation.middleware';
   imports: [
     ConfigModule.forRoot({
       envFilePath: [`.env.stage.${process.env.STAGE}`],
-      validationSchema: configValidationSchema,      
+      validationSchema: configValidationSchema,
     }),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
-        return{
+        return {
           type: 'postgres',
           synchronize: true,
           autoLoadEntities: true,
-          host:configService.get('DB_HOST'),
-          port:configService.get('DB_PORT'),
-          database:configService.get('DB_DATABASE'),
-          username:configService.get('DB_USERNAME'),
-          password:configService.get('DB_PASSWORD'),
-          ssl: {     
+          host: configService.get('DB_HOST'),
+          port: configService.get('DB_PORT'),
+          database: configService.get('DB_DATABASE'),
+          username: configService.get('DB_USERNAME'),
+          password: configService.get('DB_PASSWORD'),
+          awsRegion: configService.get('AWS_REGION'),
+          awsAccessKey: configService.get('AWS_ACCESS_KEY_ID'),
+          awsSecretKey: configService.get('AWS_SECRET_ACCESS_KEY'),
+          awsPublicBucketName: configService.get('AWS_PUBLIC_BUCKET_NAME'),
+          ssl: {
             require: true,
-            rejectUnauthorized: false 
-          },       
-        }
+            rejectUnauthorized: false,
+          },
+        };
       },
     }),
     OffersModule,

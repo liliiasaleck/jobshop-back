@@ -28,6 +28,5 @@ export class OffersService {
     return this.offersRepository.createOffer(createOfferDto)
   }
 
-  
 
 }

@@ -3,10 +3,13 @@ import User from 'src/app/auth/user.entity';
 import {
   Column,
   Entity,
+  JoinColumn,
   ManyToOne,
   ObjectIdColumn,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import Logo from './logo.entity';
 
 @Entity()
 export class Offer {
@@ -25,8 +28,6 @@ export class Offer {
   @Column()
   tech: string;
   @Column()
-  logo: string;
-  @Column()
   experience: string;
   @Column()
   companySize: number;
@@ -42,4 +43,13 @@ export class Offer {
   longitude: number;
   @Column({ default: 0 , type: 'decimal'})
   latitude: number;
+  @JoinColumn()
+  @OneToOne(
+    () => Logo,
+    {
+      eager: true,
+      nullable: true
+    }
+  )
+  public logo?: Logo;
 }
