@@ -1,11 +1,7 @@
-import { Exclude } from 'class-transformer';
-import User from 'src/app/auth/user.entity';
 import {
   Column,
   Entity,
   JoinColumn,
-  ManyToOne,
-  ObjectIdColumn,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';

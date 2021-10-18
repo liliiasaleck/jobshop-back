@@ -4,12 +4,14 @@ import { OffersRepository } from './offers.reporitory';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Offer } from './offer.entity';
 import { GetOfferDto } from './dto/get-offer-dto';
+import { LogoService } from './logo.service';
 
 @Injectable()
 export class OffersService {
   constructor(
     @InjectRepository(OffersRepository)
     private offersRepository: OffersRepository,
+    private readonly logoService: LogoService
   ) {}
 
   getAllOffers(getOfferDto: GetOfferDto): Promise<Offer[]> {
@@ -28,5 +30,9 @@ export class OffersService {
     return this.offersRepository.createOffer(createOfferDto)
   }
 
+  async addLogo(id :number, imageBuffer: Buffer, filename: string) {
+    const logo = await this.logoService.uploadLogo(imageBuffer, filename);
+    return logo;
+  }
 
 }
