@@ -40,12 +40,8 @@ export class Offer {
   @Column({ default: 0 , type: 'decimal'})
   latitude: number;
   @JoinColumn()
-  @OneToOne(
-    () => Logo,
-    {
-      eager: true,
-      nullable: true
-    }
-  )
-  public logo?: Logo;
-}
+  @OneToOne(() => Logo, (logo) => logo.offer, {
+    eager: true,
+    nullable: true,
+  })
+  public logo?: Logo;}

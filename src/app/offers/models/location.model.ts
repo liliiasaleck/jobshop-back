@@ -16,4 +16,9 @@ export enum LocationType {
   KIELCE = 'Kielce',
   OLSZTYN = 'Olsztyn',
   GLIWICE = 'Gliwice',
+  BERLIN = 'Berlin',
+  NEW_YORK = 'New York',
+  SYDNEY = 'Sydney',
+  SAN_FRANCISCO = 'San Francisco',
+  REMOTE = 'Remote'
 }

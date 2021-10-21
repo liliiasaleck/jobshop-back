@@ -1,6 +1,7 @@
 import { EntityRepository, Repository } from 'typeorm';
 import { CreateOfferDto } from './dto/create-offer.dto';
 import { GetOfferDto } from './dto/get-offer-dto';
+import Logo from './logo.entity';
 import { EmploymentType } from './models/employmentType.model';
 import { ExperienceType } from './models/experience.model';
 import { LocationType } from './models/location.model';
@@ -14,6 +15,8 @@ export class OffersRepository extends Repository<Offer> {
     const salaryFrom = Number(getOfferDto.salaryFrom);
     const salaryTo = Number(getOfferDto.salaryTo);
     const query = this.createQueryBuilder('offer');
+
+    
 
     if (location) {
       query.andWhere('LOWER(offer.location) LIKE LOWER(:location)', {
@@ -47,11 +50,11 @@ export class OffersRepository extends Repository<Offer> {
       query.andWhere('offer.salaryTo <= :salaryTo', { salaryTo });
     }
 
-    const offer = await query.getMany();
+    const offer = await query.leftJoinAndSelect('offer.logo', 'logo').getMany();
     return offer;
   }
 
-  async createOffer(createOfferDto: CreateOfferDto): Promise<Offer> {
+  async createOffer(createOfferDto: CreateOfferDto, logo: Logo): Promise<Offer> {
     const {
       title,
       salaryFrom,
@@ -84,6 +87,7 @@ export class OffersRepository extends Repository<Offer> {
       webSite,
       longitude,
       latitude,
+      logo
       
     });
     await this.save(offer);

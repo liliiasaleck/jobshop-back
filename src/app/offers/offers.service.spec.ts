@@ -17,14 +17,15 @@ const mockOffer = {
   salaryTo: 2,
   location: 'Test',
   tech: 'Test',
-  logo: 'Test',
+  logo: {},
   experience: 'Test',
   companySize: 3,
   companyName: 'Test',
   employmentType: 'Test',
   jobDescription: 'Test',
   aboutCompany: 'Test',
-  webSite: 'test.com'
+  webSite: 'test.com',
+ 
 
 };
 

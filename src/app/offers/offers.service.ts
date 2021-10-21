@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Offer } from './offer.entity';
 import { GetOfferDto } from './dto/get-offer-dto';
 import { LogoService } from './logo.service';
+import Logo from './logo.entity';
 
 @Injectable()
 export class OffersService {
@@ -26,13 +27,16 @@ export class OffersService {
     return found;
   }
 
-  createOffer(createOfferDto: CreateOfferDto): Promise<Offer> {
-    return this.offersRepository.createOffer(createOfferDto)
+  createOffer(createOfferDto: CreateOfferDto, logo: Logo): Promise<Offer> {
+    return this.offersRepository.createOffer(createOfferDto, logo);
   }
 
   async addLogo(id :number, imageBuffer: Buffer, filename: string) {
     const logo = await this.logoService.uploadLogo(imageBuffer, filename);
     return logo;
   }
+
+  
+  
 
 }

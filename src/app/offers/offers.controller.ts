@@ -25,9 +25,12 @@ export class OffersController {
     return this.offersService.getOfferById(id)
   }
 
-  @Post()@UseGuards(AuthGuard())
-  createOffer(@Body() createOfferDto: CreateOfferDto): Promise<Offer> {
-    return this.offersService.createOffer(createOfferDto);
+
+  @Post()
+  @UseGuards(AuthGuard())
+  async createOffer(@Body() createOfferDto: CreateOfferDto): Promise<Offer> {
+    const logo = await this.logoService.getLogoById(createOfferDto.logoId);
+    return this.offersService.createOffer(createOfferDto, logo);
   }
 
   @Post('logo')
@@ -36,4 +39,5 @@ export class OffersController {
   async addLogo(@Req() request, @UploadedFile() file: Express.Multer.File) {
     return this.logoService.uploadLogo( file.buffer, file.originalname);
   }
+
 }

@@ -1,8 +1,9 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Offer } from './offer.entity';
  
 @Entity()
 class Logo {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   public id: number;
  
   @Column()
@@ -10,6 +11,11 @@ class Logo {
  
   @Column()
   public key: string;
+
+  @OneToOne(() => Offer, (offer) => offer.logo, { nullable: true })
+  offer?: Offer;
 }
+
+
  
 export default Logo;

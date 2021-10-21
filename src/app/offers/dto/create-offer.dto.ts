@@ -5,7 +5,6 @@ export class CreateOfferDto {
   salaryTo: number;
   location: string;
   tech: string;
-  logo: string;
   experience: string;
   companySize: number;
   companyName: string;
@@ -15,4 +14,5 @@ export class CreateOfferDto {
   webSite: string;
   longitude: number;
   latitude: number;
+  logoId: number;
 }

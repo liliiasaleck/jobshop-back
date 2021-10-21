@@ -28,7 +28,11 @@ export class LogoService {
       key: uploadResult.Key,
       url: uploadResult.Location,
     });
-    await this.LogoRepository.save(newFile);
-    return newFile;
+    const savedLogo = await this.LogoRepository.save(newFile);
+    return savedLogo;
+  }
+
+  async getLogoById(id: number) {
+    return await this.LogoRepository.findOne(id);
   }
 }
