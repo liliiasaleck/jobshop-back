@@ -35,6 +35,7 @@ import { GeoLocationMiddleware } from './middleware/geoLocation.middleware';
           awsAccessKey: configService.get('AWS_ACCESS_KEY_ID'),
           awsSecretKey: configService.get('AWS_SECRET_ACCESS_KEY'),
           awsPublicBucketName: configService.get('AWS_PUBLIC_BUCKET_NAME'),
+          access: configService.get('ACCESS'),
           ssl: {
             require: true,
             rejectUnauthorized: false,

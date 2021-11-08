@@ -9,8 +9,8 @@ export enum TechType {
     ADMIN = 'ADMIN',
     PM = 'PM',
     RUBY = 'RUBY',
-    SCALA = 'SCALA',
-    GO = 'GO',
-    UX_UI = "UX_UI",
-    SECURITY = 'SECURITY'
+    GAME = 'GAME',
+    NET = 'NET',
+    DATA = "DEVOPS",
+    SECURITY = 'DEVOPS'
   }
