@@ -11,7 +11,7 @@ export class LogoService {
   constructor(
     @InjectRepository(Logo)
     private LogoRepository: Repository<Logo>,
-    private readonly configService: ConfigService,
+    private configService: ConfigService,
   ) {}
 
   async uploadLogo(dataBuffer: Buffer, filename: string) {

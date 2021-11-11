@@ -11,6 +11,7 @@ export enum TechType {
     RUBY = 'RUBY',
     GAME = 'GAME',
     NET = 'NET',
-    DATA = "DEVOPS",
-    SECURITY = 'DEVOPS'
+    DATA = "DATA",
+    SECURITY = 'SECURITY',
+    DEVOPS = "DEVOPS"
   }

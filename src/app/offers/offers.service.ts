@@ -12,7 +12,7 @@ export class OffersService {
   constructor(
     @InjectRepository(OffersRepository)
     private offersRepository: OffersRepository,
-    private readonly logoService: LogoService
+    private logoService: LogoService
   ) {}
 
   getAllOffers(getOfferDto: GetOfferDto): Promise<Offer[]> {
@@ -35,8 +35,4 @@ export class OffersService {
     const logo = await this.logoService.uploadLogo(imageBuffer, filename);
     return logo;
   }
-
-  
-  
-
 }

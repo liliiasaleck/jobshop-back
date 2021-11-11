@@ -15,9 +15,6 @@ export class OffersRepository extends Repository<Offer> {
     const salaryFrom = Number(getOfferDto.salaryFrom);
     const salaryTo = Number(getOfferDto.salaryTo);
     const query = this.createQueryBuilder('offer');
-
-    
-
     if (location) {
       query.andWhere('LOWER(offer.location) LIKE LOWER(:location)', {
         location,
